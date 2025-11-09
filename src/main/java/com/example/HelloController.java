@@ -1,22 +1,37 @@
 package com.example;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
- * Controller layer: mediates between the view (FXML) and the model.
+ * Controller layer: connects UI with the model.
  */
 public class HelloController {
 
     private final HelloModel model = new HelloModel();
 
     @FXML
-    private Label messageLabel;
+    private TextArea chatArea;
+
+    @FXML
+    private TextField inputField;
 
     @FXML
     private void initialize() {
-        if (messageLabel != null) {
-            messageLabel.setText(model.getGreeting());
-        }
+        // Starta lyssnare på inkommande meddelanden
+        model.startMessageListener(message -> Platform.runLater(() -> {
+            chatArea.appendText(message + "\n");
+        }));
+    }
+
+    @FXML
+    private void onSendClicked() {
+        String text = inputField.getText();
+        if (text.isBlank()) return;
+
+        model.sendMessage("Kian", text);  // byt ut "Kian" till ditt namn om du vill
+        inputField.clear();
     }
 }
