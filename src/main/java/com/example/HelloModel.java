@@ -13,9 +13,6 @@ public class HelloModel {
     private final String backendUrl = System.getenv().getOrDefault("NTFY_URL", "https://ntfy.sh");
     private final String topic = "javafx-demo-chat";
 
-    /**
-     * Skickar ett textmeddelande till ntfy.
-     */
     public void sendMessage(String user, String message) {
         try {
             // skapar JSONsträng manuellt
@@ -32,7 +29,7 @@ public class HelloModel {
             // sicka meddelandet
             client.sendAsync(request, HttpResponse.BodyHandlers.discarding());
         } catch (Exception e) {
-            e.printStackTrace();  // Logga eventuella fel
+            e.printStackTrace();
         }
     }
 
@@ -51,8 +48,8 @@ public class HelloModel {
                                 String user = extractValue(line, "user");
                                 String message = extractValue(line, "message");
                                 if (user != null && message != null) {
-                                    System.out.println("Meddelande mottaget: " + user + ": " + message);  // Logg för inkommande meddelanden
-                                    onMessage.accept(user + ": " + message);  // Skicka meddelande till callback
+                                    System.out.println("Meddelande mottaget: " + user + ": " + message);
+                                    onMessage.accept(user + ": " + message);
                                 }
                             }
                         });
