@@ -8,12 +8,10 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.HelloController">
 
-    <!-- Mittendel: chattfönstret -->
     <center>
         <TextArea fx:id="chatArea" editable="false" wrapText="true"/>
     </center>
 
-    <!-- Nederdel: textfält + knapp -->
     <bottom>
         <HBox spacing="10">
             <padding>
