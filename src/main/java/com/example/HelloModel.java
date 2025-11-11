@@ -9,7 +9,6 @@ import java.util.function.Consumer;
 
 public class HelloModel {
     private final HttpClient client = HttpClient.newHttpClient();
-
     private final String backendUrl = System.getenv().getOrDefault("NTFY_URL", "https://ntfy.sh");
     private final String topic = "javafx-demo-chat";
 

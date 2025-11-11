@@ -20,6 +20,9 @@ public class HelloController {
         model.startMessageListener(message -> Platform.runLater(() -> {
             chatArea.appendText(message + "\n");
         }));
+
+        // enter-tangent
+        inputField.setOnAction(event -> onSendClicked());
     }
 
     @FXML
@@ -27,7 +30,12 @@ public class HelloController {
         String text = inputField.getText();
         if (text.isBlank()) return;
 
+        // skicka till backend
         model.sendMessage("Kian", text);
+
+        // meddelande direkt i chatten
+        chatArea.appendText("Du: " + text + "\n");
+
         inputField.clear();
     }
 }
