@@ -10,7 +10,7 @@ public class HelloFX extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloFX.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 300);
-        stage.setTitle("HelloMVC Chat");
+        stage.setTitle("Chat");
         stage.setScene(scene);
         stage.show();
     }
